@@ -10,6 +10,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Color PrimaryColor = Color(0xff182a42);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -38,25 +40,29 @@ class _HomePageState extends State<HomePage> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                   child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: PrimaryColor,
+                    ),
                     height: 250,
                     width: double.infinity,
-                    color: Colors.blue,
+                    
                   ),
                 ),
                 ListView.builder(
-                      itemCount: 4,
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemBuilder: (BuildContext context, index) {
-                        return GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Navbar()));
-                            },
-                            child: HomePageWidget());
-                      }),
+                    itemCount: 8,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (BuildContext context, index) {
+                      return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Navbar()));
+                          },
+                          child: HomePageWidget());
+                    }),
               ],
             ),
           )),

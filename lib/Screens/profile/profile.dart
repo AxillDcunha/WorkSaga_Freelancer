@@ -62,10 +62,10 @@ class _ProfileState extends State<Profile> {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
                   child: SizedBox(
-                    height: 80,
-                    width: 80,
+                    height: 100,
+                    width: 100,
                     child: Lottie.network(
-                        'https://assets4.lottiefiles.com/packages/lf20_vxy0klrn.json'),
+                        'https://assets9.lottiefiles.com/packages/lf20_kkyiobgx.json'),
                   ),
                 );
               } else if (snapshot.hasError) {
