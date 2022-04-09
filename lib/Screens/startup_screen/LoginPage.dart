@@ -33,9 +33,6 @@ Future<void> login(String email, String password) async {
   );
 
   if (response.statusCode == 200) {
-    // If the server did return a 201 CREATED response,
-    // then parse the JSON.
-
     final parsedJson = jsonDecode(response.body);
     final SharedPreferences sharedPreferences =
         await SharedPreferences.getInstance();
@@ -47,8 +44,6 @@ Future<void> login(String email, String password) async {
         await SharedPreferences.getInstance();
     await sharedPreferences.setInt('isLoggedIn', 0);
   } else {
-    // If the server did not return a 201 CREATED response,
-    // then throw an exception.
     final SharedPreferences sharedPreferences =
         await SharedPreferences.getInstance();
 
@@ -184,7 +179,7 @@ class _LoginPageState extends State<LoginPage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  isLoggedIn ? LoginPage() : MapView()));
+                                  isLoggedIn ? MapView() : LoginPage()));
                     },
                     child: Text(
                       'Log In',
