@@ -5,17 +5,17 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 class HomePageWidget extends StatelessWidget {
   Color primarycolor = Color(0xff182a42);
   Color secondarycolor = Color.fromARGB(255, 255, 255, 255);
-  Color widgetcolor = Color(0xfff5eee5);
+  Color widgetcolor = Color.fromARGB(255, 236, 236, 238);
   @override
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
         padding: const EdgeInsets.all(5.0),
         decoration: BoxDecoration(
-          color: secondarycolor,
+          color: widgetcolor,
           boxShadow: [
             BoxShadow(
-                color: Color.fromARGB(255, 209, 208, 208),
+                color: Color.fromARGB(255, 192, 189, 189),
                 blurRadius: 5.0,
                 blurStyle: BlurStyle.outer),
           ],
@@ -46,7 +46,7 @@ class HomePageWidget extends StatelessWidget {
                           direction: Axis.horizontal,
                           allowHalfRating: true,
                           itemCount: 5,
-                          itemSize: 20.0,
+                          itemSize: 16.0,
                           itemPadding: EdgeInsets.symmetric(horizontal: 0.5),
                           itemBuilder: (context, _) => Icon(
                             Icons.star,

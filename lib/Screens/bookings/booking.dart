@@ -16,65 +16,70 @@ class _BookingsState extends State<Bookings> {
   Color secondarycolor = Color.fromARGB(255, 184, 213, 235);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: PreferredSize(
-            preferredSize: Size.fromHeight(86.0), child: AppBarWidget()),
-        body: SafeArea(
-          child: Container(
+    return SafeArea(
+      child: Scaffold(
+          backgroundColor: Colors.white,
+          appBar: PreferredSize(
+              preferredSize: Size.fromHeight(86.0), child: AppBarWidget()),
+          body: Container(
             child: DefaultTabController(
               length: 3,
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50), 
-                        color: secondarycolor 
-                        ),
-                    width: 350,
-                    
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ButtonsTabBar(
-                          backgroundColor: primarycolor,
-                          unselectedBackgroundColor: secondarycolor,
-                          labelStyle: TextStyle(
-                              color: Colors.white, fontSize: 12),
-                          unselectedLabelStyle: TextStyle(
-                              color: primarycolor,
-                              fontWeight: FontWeight.bold),
-                          unselectedBorderColor: primarycolor,
-                          radius: 50,
-                          tabs: [
-                            Tab(text: "   Pending request  "),
-                            Tab(text: "  Upcoming Orders  "),
-                            Tab(text: "    Past Orders     "),
-                          ],
-                        ),
-                      ],
+              
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50), 
+                          color: secondarycolor 
+                          ),
+                      width: 350,
+                      height: 40,
+                      
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          ButtonsTabBar(
+                            backgroundColor: primarycolor,
+                            unselectedBackgroundColor: secondarycolor,
+                            labelStyle: TextStyle(
+                                color: Colors.white, fontSize: 12),
+                            unselectedLabelStyle: TextStyle(
+                                color: primarycolor,
+                                fontWeight: FontWeight.bold),
+                            unselectedBorderColor: primarycolor,
+                            radius: 50,
+                            tabs: [
+                              Tab(text: "   Pending request  "),
+                              Tab(text: "  Upcoming Orders  "),
+                              Tab(text: "    Past Orders     "),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 20),
-                  Expanded(
-                    child: TabBarView(
-                      children: <Widget>[
-                        Center(
-                          child: SingleChildScrollView(child: UpcomingBookings()),
-                        ),
-                        Center(
-                          child: SingleChildScrollView(child: UpcomingBookings()),
-                        ),
-                        Center(
-                          child: SingleChildScrollView(child: UpcomingBookings()),
-                        ),
-                      ],
+                    SizedBox(height: 20),
+                    Expanded(
+                      child: TabBarView(
+                        children: <Widget>[
+                          Center(
+                            child: SingleChildScrollView(child: UpcomingBookings()),
+                          ),
+                          Center(
+                            child: SingleChildScrollView(child: UpcomingBookings()),
+                          ),
+                          Center(
+                            child: SingleChildScrollView(child: UpcomingBookings()),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ));
+          )),
+    );
   }
 }

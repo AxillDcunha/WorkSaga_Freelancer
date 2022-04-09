@@ -42,6 +42,18 @@ class _ProfileEditState extends State<ProfileEdit> {
     return FutureBuilder(
         future: getprofile(),
         builder: (context, AsyncSnapshot<ProfileModel> snapshot) {
+          // if (snapshot.connectionState == ConnectionState.waiting) {
+          //       return Center(
+          //         child: SizedBox(
+          //           height: 100,
+          //           width: 100,
+          //           child: Lottie.network(
+          //               'https://assets9.lottiefiles.com/packages/lf20_kkyiobgx.json'),
+          //         ),
+          //       );
+          //     } else if (snapshot.hasError) {
+          //       return Text('error');
+          //     }
           return Container(
             height: MediaQuery.of(context).size.height / 1.1,
             child: Column(
@@ -101,6 +113,8 @@ class _ProfileEditState extends State<ProfileEdit> {
                             child: TextFormField(
                                 controller: bio..text = snapshot.data!.bio,
                                 obscureText: false,
+                                keyboardType: TextInputType.multiline,
+                                maxLines: 3,
                                 decoration: InputDecoration(
                                   hintText: 'bio',
                                   labelText: 'Bio',
@@ -138,6 +152,8 @@ class _ProfileEditState extends State<ProfileEdit> {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                             child: TextFormField(
+                                keyboardType: TextInputType.multiline,
+                                maxLines: 3,
                                 controller: about..text = snapshot.data!.about,
                                 obscureText: false,
                                 decoration: InputDecoration(

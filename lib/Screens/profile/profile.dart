@@ -44,19 +44,22 @@ class _ProfileState extends State<Profile> {
 
       model = ProfileModel.fromJson(data);
       print(model.id);
+      print('hello');
     }
+    var datafreelancer = model;
+    print(datafreelancer.id);
     return model;
   }
 
   @override
   Widget build(BuildContext context) {
     // Size get; preferredSize => const Size.fromHeight(100);
-    return Scaffold(
-      // appBar: AppBarWidget();
-      key: scaffoldKey,
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: FutureBuilder(
+    return SafeArea(
+      child: Scaffold(
+        // appBar: AppBarWidget();
+        key: scaffoldKey,
+        backgroundColor: Colors.white,
+        body: FutureBuilder(
             future: getprofile(),
             builder: (context, AsyncSnapshot<ProfileModel> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
@@ -71,6 +74,7 @@ class _ProfileState extends State<Profile> {
               } else if (snapshot.hasError) {
                 return Text('error');
               }
+
               return GestureDetector(
                 onTap: () => FocusScope.of(context).unfocus(),
                 child: Container(
