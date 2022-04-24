@@ -13,6 +13,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       elevation: 0,
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       flexibleSpace: Container(

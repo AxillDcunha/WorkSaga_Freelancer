@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -30,14 +30,21 @@ class _ProfileState extends State<Profile> {
   Future<ProfileModel> getprofile() async {
     late ProfileModel model;
 
+    final pref = await SharedPreferences.getInstance();
+    final auth = pref.getString("auth-token");
+
+    print(auth);
+
     var url =
         Uri.parse("https://worksaga.herokuapp.com/api/freelancerauth/getuser");
 
     var response = await http.post(url, headers: <String, String>{
       "content-type": "application/json",
-      "auth-token":
-          " eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjIzOGJkZjYxN2FiNzc4ZGU2ODczM2QyIn0sImlhdCI6MTY0Nzg4NTgxNH0.XSy7K-KBTcAbpTwlP3We6wq3319myBoiLm4ESyYIGx4"
+      "auth-token": auth.toString()
+          
     });
+
+    // " eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjIzOGJkZjYxN2FiNzc4ZGU2ODczM2QyIn0sImlhdCI6MTY0Nzg4NTgxNH0.XSy7K-KBTcAbpTwlP3We6wq3319myBoiLm4ESyYIGx4"
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
@@ -48,8 +55,16 @@ class _ProfileState extends State<Profile> {
     }
     var datafreelancer = model;
     print(datafreelancer.id);
+    final SharedPreferences sharedPreferences =
+      await SharedPreferences.getInstance();
+      await sharedPreferences.setString('name', model.name);
+      await sharedPreferences.setString('bio', model.bio);
+      await sharedPreferences.setString('about', model.about);
     return model;
+    
   }
+
+  
 
   @override
   Widget build(BuildContext context) {

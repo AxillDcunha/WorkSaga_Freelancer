@@ -48,7 +48,8 @@ Future<void> location(double longitude, double latitude, String pincode,
   } else {
     // If the server did not return a 201 CREATED response,
     // then throw an exception.
-    throw Exception('Failed to create data.');
+    // throw Exception('Failed to create data.');
+    print('axill is chutiya');
   }
 }
 
@@ -180,12 +181,16 @@ class _MapViewState extends State<MapView> {
                                           country!,
                                           city!);
                                       print(placemarks[1]);
-                                      Navigator.pushReplacement(
-                                        
-                                          context,
-                                          MaterialPageRoute(
-                                            
-                                              builder: (context) => Navbar()));
+                                      Future.delayed(Duration(seconds: 5), () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (_) => Navbar()));
+                                      });
+                                      // Navigator.pushReplacement(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //         builder: (context) => Navbar()));
                                     },
                                     icon: Icon(Icons
                                         .gps_fixed_outlined), //icon data for elevated button
